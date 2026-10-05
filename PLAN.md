@@ -125,7 +125,7 @@ Mỗi phase là một lần commit + deploy, đi theo skill code-review và depl
   - [x] Supabase Free `ngoa-long-db` qua Vercel Marketplace (region iad1, cùng region server Vercel), biến môi trường tự đồng bộ.
   - [x] Tắt đăng ký mới, tạo user admin, thêm vào bảng `admins`.
 - [x] **Phase 1 — Nền tảng dữ liệu:** migration SQL, RLS, bucket ảnh, sinh type, Supabase client, `proxy.ts`.
-- [ ] **Phase 2 — Đăng nhập admin:** `/login`, đăng xuất, chặn `/admin`.
+- [x] **Phase 2 — Đăng nhập admin:** `/login`, đăng xuất, chặn `/admin`, khung trang admin (menu trái, trang Tổng quan), font + bảng màu blaugrana trong `globals.css`.
 - [ ] **Phase 3 — Admin cầu thủ:** thêm / sửa / xoá, upload ảnh.
 - [ ] **Phase 4 — Trang Tổng quan đội (công khai):** cầu thủ theo vị trí, số buổi đá, tổng bàn, top ghi bàn / kiến tạo / tỉ lệ thắng.
 - [ ] **Phase 5 — Admin trận đấu:** tạo trận → chia 2 bên (đá chính tối đa 7/bên + dự bị) → nhập tỉ số → nhập chi tiết bàn thắng (tùy chọn). Cảnh báo khi số bàn chi tiết lệch tỉ số.
