@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
@@ -15,8 +15,14 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: "bg-blau text-white hover:bg-blau/90",
   secondary: "border border-line bg-white text-ink hover:bg-paper",
   ghost: "text-muted hover:bg-paper hover:text-ink",
+  danger: "border border-danger/40 bg-white text-danger hover:bg-danger hover:text-white",
 };
 
+/** Dùng chung cho <Link> cần trông giống nút. */
+export function getButtonClassName(variant: ButtonVariant = "primary"): string {
+  return `${BASE_CLASSES} ${VARIANT_CLASSES[variant]}`;
+}
+
 export function Button({ variant = "primary", type = "button", className = "", ...props }: ButtonProps) {
-  return <button type={type} className={`${BASE_CLASSES} ${VARIANT_CLASSES[variant]} ${className}`} {...props} />;
+  return <button type={type} className={`${getButtonClassName(variant)} ${className}`} {...props} />;
 }

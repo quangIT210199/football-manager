@@ -5,7 +5,10 @@ import { AdminNavLink } from "@/app/admin/_components/AdminNavLink";
 import { Button } from "@/components/ui/Button";
 import { ROUTES, TEAM_NAME } from "@/lib/constants";
 
-const NAV_ITEMS = [{ href: ROUTES.admin, label: "Tổng quan" }];
+const NAV_ITEMS = [
+  { href: ROUTES.admin, label: "Tổng quan" },
+  { href: ROUTES.adminPlayers, label: "Cầu thủ" },
+];
 
 type AdminSidebarProps = {
   email: string;

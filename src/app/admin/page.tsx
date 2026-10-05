@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
+import { ROUTES } from "@/lib/constants";
 import { requireAdmin } from "@/lib/server/auth";
 import { getTeamCounts } from "@/lib/server/teamStats";
 
@@ -31,7 +33,10 @@ export default async function AdminHomePage() {
       </dl>
       {counts.players === 0 && (
         <p className="rounded-lg border border-dashed border-line bg-white p-4 text-sm text-muted">
-          Chưa có cầu thủ nào. Mục quản lý cầu thủ sẽ xuất hiện ở menu bên trái trong bản cập nhật tới.
+          Chưa có cầu thủ nào.{" "}
+          <Link href={ROUTES.adminNewPlayer} className="font-semibold text-blau hover:underline">
+            Thêm cầu thủ đầu tiên
+          </Link>
         </p>
       )}
     </div>
