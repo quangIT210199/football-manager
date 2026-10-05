@@ -127,7 +127,7 @@ Mỗi phase là một lần commit + deploy, đi theo skill code-review và depl
 - [x] **Phase 1 — Nền tảng dữ liệu:** migration SQL, RLS, bucket ảnh, sinh type, Supabase client, `proxy.ts`.
 - [x] **Phase 2 — Đăng nhập admin:** `/login`, đăng xuất, chặn `/admin`, khung trang admin (menu trái, trang Tổng quan), font + bảng màu blaugrana trong `globals.css`.
 - [x] **Phase 3 — Admin cầu thủ:** thêm / sửa / xoá, upload ảnh (cắt 3:4 + nén ở trình duyệt), thẻ `PlayerCard` dùng chung, ẩn cầu thủ thay vì xoá khi đã có dữ liệu trận.
-- [ ] **Phase 4 — Trang Tổng quan đội (công khai):** cầu thủ theo vị trí, số buổi đá, tổng bàn, top ghi bàn / kiến tạo / tỉ lệ thắng.
+- [x] **Phase 4 — Trang Tổng quan đội (công khai):** toàn bộ thành viên theo vị trí kèm thông số (tuổi, trận, thắng %, bàn, KT, PL), số buổi đá, tổng bàn, top ghi bàn / kiến tạo / tỉ lệ thắng, **đội hình buổi gần nhất trên sân** (component `Pitch` + `BenchRow` dùng chung). Trang tĩnh, làm mới khi admin sửa dữ liệu.
 - [ ] **Phase 5 — Admin trận đấu:** tạo trận → chia 2 bên (đá chính tối đa 7/bên + dự bị) → nhập tỉ số → nhập chi tiết bàn thắng (tùy chọn). Cảnh báo khi số bàn chi tiết lệch tỉ số.
 - [ ] **Phase 6 — Trang Trận đấu (công khai):** danh sách các buổi đá, trang chi tiết vẽ 2 đội 7 người trên sân, dự bị mỗi bên, người ghi bàn.
 - [ ] **Phase 7 — Hoàn thiện:** cron keep-alive, metadata + ảnh xem trước khi chia sẻ link (Zalo / Facebook), kiểm tra giao diện điện thoại.
