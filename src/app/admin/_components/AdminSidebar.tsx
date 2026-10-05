@@ -8,6 +8,7 @@ import { ROUTES, TEAM_NAME } from "@/lib/constants";
 const NAV_ITEMS = [
   { href: ROUTES.admin, label: "Tổng quan" },
   { href: ROUTES.adminPlayers, label: "Cầu thủ" },
+  { href: ROUTES.adminMatches, label: "Trận đấu" },
 ];
 
 type AdminSidebarProps = {

@@ -133,6 +133,9 @@ isOneToOne: false
           Functions: {
             "is_admin":
 { Args: Record<PropertyKey, never>; Returns: boolean
+                           },
+"save_match_lineup":
+{ Args: { "p_entries": Json,"p_match_id": string }; Returns: undefined
                            }
           }
           Enums: {

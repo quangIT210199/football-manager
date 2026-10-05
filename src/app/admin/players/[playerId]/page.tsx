@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AdminPageHeader } from "@/app/admin/_components/AdminPageHeader";
+import { ConfirmDeleteButton } from "@/app/admin/_components/ConfirmDeleteButton";
 import { deletePlayer, updatePlayer } from "@/app/admin/players/actions";
-import { DeletePlayerButton } from "@/app/admin/players/_components/DeletePlayerButton";
 import { PlayerForm } from "@/app/admin/players/_components/PlayerForm";
 import { ROUTES } from "@/lib/constants";
 import { requireAdmin } from "@/lib/server/auth";
@@ -34,7 +34,15 @@ export default async function EditPlayerPage({ params }: PageProps<"/admin/playe
         <p className="text-sm text-muted">
           Chỉ xoá được cầu thủ chưa từng ra sân. Người đã có dữ liệu trận đấu thì bỏ tick &quot;Đang tham gia&quot; để ẩn.
         </p>
-        <DeletePlayerButton action={deletePlayer.bind(null, player.id)} playerName={player.full_name} />
+        <ConfirmDeleteButton
+          action={deletePlayer.bind(null, player.id)}
+          triggerLabel="Xoá cầu thủ"
+          confirmMessage={
+            <>
+              Xoá hẳn <strong>{player.full_name}</strong> và ảnh thẻ? Không thể hoàn tác.
+            </>
+          }
+        />
       </section>
     </div>
   );

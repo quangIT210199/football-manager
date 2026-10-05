@@ -2,19 +2,16 @@
 
 import { randomUUID } from "node:crypto";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { ROUTES } from "@/lib/constants";
 import { requireAdmin } from "@/lib/server/auth";
+import { revalidateTeamPages } from "@/lib/server/revalidate";
 import { removePlayerPhoto, uploadPlayerPhoto, validatePlayerPhoto } from "@/lib/server/playerPhotos";
 import { createSupabaseServerClient } from "@/lib/server/supabase";
 import { PLAYER_POSITIONS } from "@/lib/utils/position";
-
-export type PlayerFormState = {
-  error: string | null;
-};
+import type { FormState } from "@/types/form";
 
 const UNIQUE_VIOLATION = "23505";
 const FOREIGN_KEY_VIOLATION = "23503";
@@ -81,12 +78,11 @@ function toFriendlyDbError(code: string | undefined): string {
 }
 
 function finishPlayerChange(): never {
-  // Thông tin cầu thủ hiện ở nhiều trang (danh sách, thống kê, đội hình) nên làm mới toàn bộ.
-  revalidatePath("/", "layout");
+  revalidateTeamPages();
   redirect(ROUTES.adminPlayers);
 }
 
-export async function createPlayer(_prevState: PlayerFormState, formData: FormData): Promise<PlayerFormState> {
+export async function createPlayer(_prevState: FormState, formData: FormData): Promise<FormState> {
   await requireAdmin();
   const form = parsePlayerForm(formData);
   if (!form.ok) return { error: form.error };
@@ -109,9 +105,9 @@ export async function createPlayer(_prevState: PlayerFormState, formData: FormDa
 
 export async function updatePlayer(
   playerId: string,
-  _prevState: PlayerFormState,
+  _prevState: FormState,
   formData: FormData,
-): Promise<PlayerFormState> {
+): Promise<FormState> {
   await requireAdmin();
   const form = parsePlayerForm(formData);
   if (!form.ok) return { error: form.error };
@@ -137,7 +133,7 @@ export async function updatePlayer(
   finishPlayerChange();
 }
 
-export async function deletePlayer(playerId: string): Promise<PlayerFormState> {
+export async function deletePlayer(playerId: string): Promise<FormState> {
   await requireAdmin();
 
   const supabase = await createSupabaseServerClient();

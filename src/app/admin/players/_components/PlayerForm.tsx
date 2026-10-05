@@ -3,28 +3,27 @@
 import Link from "next/link";
 import { useActionState, useState } from "react";
 
-import type { PlayerFormState } from "@/app/admin/players/actions";
 import { PhotoField } from "@/app/admin/players/_components/PhotoField";
 import { usePlayerPhoto } from "@/app/admin/players/_components/usePlayerPhoto";
 import { Button, getButtonClassName } from "@/components/ui/Button";
 import { SelectField } from "@/components/ui/SelectField";
 import { TextField } from "@/components/ui/TextField";
-import { ROUTES } from "@/lib/constants";
+import { INITIAL_FORM_STATE, ROUTES } from "@/lib/constants";
 import { getPositionLabel, POSITION_OPTIONS } from "@/lib/utils/position";
+import type { FormState } from "@/types/form";
 import type { Player } from "@/types/player";
 
-const INITIAL_STATE: PlayerFormState = { error: null };
 const DEFAULT_POSITION = "MF";
 
 type PlayerFormProps = {
-  action: (state: PlayerFormState, formData: FormData) => Promise<PlayerFormState>;
+  action: (state: FormState, formData: FormData) => Promise<FormState>;
   player?: Player;
   initialPhotoUrl: string | null;
   submitLabel: string;
 };
 
 export function PlayerForm({ action, player, initialPhotoUrl, submitLabel }: PlayerFormProps) {
-  const [state, formAction, isPending] = useActionState(action, INITIAL_STATE);
+  const [state, formAction, isPending] = useActionState(action, INITIAL_FORM_STATE);
   const photo = usePlayerPhoto(initialPhotoUrl);
   // Các ô đều được điều khiển bằng state để giữ nguyên dữ liệu đã nhập khi server báo lỗi.
   const [fullName, setFullName] = useState(player?.full_name ?? "");
