@@ -45,9 +45,19 @@ Dùng các tool của Vercel MCP server (tên `vercel`). Nếu chưa kết nối
 claude mcp add --transport http vercel https://mcp.vercel.com
 ```
 
+Thông tin project (dùng thẳng, không cần tra lại):
+
+| | Giá trị |
+|---|---|
+| Team | `quangnguyen999x-5565s-projects` (`team_LZKvDrUVFCUzFH6ySPohbImU`) |
+| Project | `football-manager` (`prj_OBr3CyiZCY3Ajxd3ZJ3OXfZCHoKW`) |
+| Production | https://football-manager-ivory-nu.vercel.app |
+
+Nếu MCP báo `403 Not authorized ... scope` hoặc `list_teams` rỗng → MCP đang đăng nhập sai tài khoản. Nhắc người dùng `/mcp` → Clear authentication → Authenticate lại bằng tài khoản `quangnguyen999x` và chọn team trên.
+
 Các bước:
 
-1. Liệt kê team/project để lấy đúng project của football-manager (không đoán ID).
+1. Dùng team/project ID ở bảng trên (chỉ tra lại bằng `list_teams`/`list_projects` nếu ID không còn đúng).
 2. Liệt kê deployments của project → chọn **deployment mới nhất** của nhánh vừa push.
 3. Xem trạng thái:
    - `ERROR` ở giai đoạn build → đọc **build logs**.
