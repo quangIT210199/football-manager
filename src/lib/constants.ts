@@ -4,6 +4,7 @@ export const TEAM_NAME = "Ngọa Long";
 
 export const ROUTES = {
   home: "/",
+  matches: "/matches",
   login: "/login",
   admin: "/admin",
   adminPlayers: "/admin/players",
@@ -11,6 +12,10 @@ export const ROUTES = {
   adminMatches: "/admin/matches",
   adminNewMatch: "/admin/matches/new",
 } as const;
+
+export function getMatchPath(matchId: string): string {
+  return `${ROUTES.matches}/${matchId}`;
+}
 
 export function getAdminPlayerPath(playerId: string): string {
   return `${ROUTES.adminPlayers}/${playerId}`;

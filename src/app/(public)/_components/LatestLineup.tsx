@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { BenchRow } from "@/components/matches/BenchRow";
 import { Pitch } from "@/components/matches/Pitch";
+import { getMatchPath } from "@/lib/constants";
 import { formatMatchDateTime } from "@/lib/utils/date";
 import { getFormationLabel } from "@/lib/utils/formation";
 import type { MatchLineup } from "@/types/match";
@@ -47,6 +50,9 @@ export function LatestLineup({ lineup }: LatestLineupProps) {
         <BenchRow side={sideA} cardSide="a" />
         <BenchRow side={sideB} cardSide="b" />
       </div>
+      <Link href={getMatchPath(lineup.matchId)} className="justify-self-start font-semibold text-gold hover:underline">
+        Xem chi tiết buổi đá →
+      </Link>
     </section>
   );
 }

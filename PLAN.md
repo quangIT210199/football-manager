@@ -129,5 +129,5 @@ Mỗi phase là một lần commit + deploy, đi theo skill code-review và depl
 - [x] **Phase 3 — Admin cầu thủ:** thêm / sửa / xoá, upload ảnh (cắt 3:4 + nén ở trình duyệt), thẻ `PlayerCard` dùng chung, ẩn cầu thủ thay vì xoá khi đã có dữ liệu trận.
 - [x] **Phase 4 — Trang Tổng quan đội (công khai):** toàn bộ thành viên theo vị trí kèm thông số (tuổi, trận, thắng %, bàn, KT, PL), số buổi đá, tổng bàn, top ghi bàn / kiến tạo / tỉ lệ thắng, **đội hình buổi gần nhất trên sân** (component `Pitch` + `BenchRow` dùng chung). Trang tĩnh, làm mới khi admin sửa dữ liệu.
 - [x] **Phase 5 — Admin trận đấu:** tạo trận → chia 2 bên (đá chính tối đa 7/bên + dự bị, xem trước sơ đồ ngay khi chọn) → nhập tỉ số → nhập chi tiết bàn thắng (tùy chọn). Cảnh báo khi số bàn chi tiết lệch tỉ số. Lưu đội hình qua hàm DB `save_match_lineup` (một giao dịch).
-- [ ] **Phase 6 — Trang Trận đấu (công khai):** danh sách các buổi đá, trang chi tiết vẽ 2 đội 7 người trên sân, dự bị mỗi bên, người ghi bàn.
+- [x] **Phase 6 — Trang Trận đấu (công khai):** `/matches` (sắp diễn ra / kết quả), `/matches/[matchId]` (tỉ số, sơ đồ 2 đội 7 người, dự bị, diễn biến bàn thắng), menu Tổng quan / Trận đấu.
 - [ ] **Phase 7 — Hoàn thiện:** cron keep-alive, metadata + ảnh xem trước khi chia sẻ link (Zalo / Facebook), kiểm tra giao diện điện thoại.
